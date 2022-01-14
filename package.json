@@ -11,7 +11,9 @@
     "heroku-postbuild": "npm run clean && npm run build && npm run deploy"
   },
   "devDependencies": {
-    "mini-css-extract-plugin": "^2.5.0",
-    "webpack": "^5.66.0"
+    "mini-css-extract-plugin": "^2.5.0"
+  },
+  "dependencies": {
+    "webpack": "^4.46.0"
   }
 }
