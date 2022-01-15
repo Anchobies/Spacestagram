@@ -1,11 +1,12 @@
-import React from 'react'
+import React from 'react';
+import SearchBar from './SearchBar';
 
-function Search() {
+function Search({ likes, value, setValue }) {
 
     return (
-        <div>
-            
-        </div>
+        <section>
+            <SearchBar value={value} setValue={setValue} />
+        </section>
     )
 }
 
