@@ -1,6 +1,6 @@
-#Spacestagram: Image-sharing from the final frontier of
+# Spacestagram: Image-sharing from the final frontier of
 
-##About
+# #About
 
 This is the web application that is hosted at https://space-stagram.herokuapp.com/.
 
