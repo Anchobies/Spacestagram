@@ -1,4 +1,4 @@
-# Spacestagram: Image-sharing from the final frontier of
+# Spacestagram: Image-sharing from the final frontier
 
 ## About
 
