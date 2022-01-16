@@ -7,13 +7,14 @@ import DateAdapter from '@mui/lab/AdapterDateFns';
 import Home from "./Home";
 import Search from "./Search";
 
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   const [likes, setLikes] = useState([]);
   const [value, setValue] = React.useState([null, null]);
 
   useEffect(() => {
-    fetch("/likes")
+    fetch("/likes/user")
       .then((res) => res.json())
       .then((data) => console.log(data));
   }, []);

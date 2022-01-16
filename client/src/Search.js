@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
-import SearchBar from "./SearchBar";
 import { useParams, useNavigate } from "react-router-dom";
+
+import SearchBar from "./SearchBar";
+import Media from "./Media";
 
 function Search({ likes, setLikes, value, setValue }) {
   const { searchQuery } = useParams();
@@ -8,10 +10,13 @@ function Search({ likes, setLikes, value, setValue }) {
   const navigate = useNavigate();
   const API_KEY = process.env.NASA_API_KEY;
 
+
   function handleSearch(query) {
-    if (query === "random") {
+    if (!query) {
+      navigate("/");
+    } else if (query === "random") {
       navigate(`/search/random`);
-      fetch(`https://api.nasa.gov/planetary/apod?api_key=${API_KEY}&count=10`)
+      fetch(`https://api.nasa.gov/planetary/apod?api_key=${API_KEY}&count=10&thumbs=true`)
         .then((res) => res.json())
         .then((data) => setMedia(data));
     } else {
@@ -19,13 +24,13 @@ function Search({ likes, setLikes, value, setValue }) {
       const dates = query.split("to");
       if (dates.length === 1) {
         fetch(
-          `https://api.nasa.gov/planetary/apod?api_key=${API_KEY}&date=${query}`
+          `https://api.nasa.gov/planetary/apod?api_key=${API_KEY}&date=${query}&thumbs=true`
         )
           .then((res) => res.json())
           .then((data) => setMedia([data]));
       } else {
         fetch(
-          `https://api.nasa.gov/planetary/apod?api_key=${API_KEY}&start_date=${dates[0]}&end_date=${dates[1]}`
+          `https://api.nasa.gov/planetary/apod?api_key=${API_KEY}&start_date=${dates[0]}&end_date=${dates[1]}&thumbs=true`
         )
           .then((res) => res.json())
           .then((data) => setMedia(data));
@@ -33,18 +38,19 @@ function Search({ likes, setLikes, value, setValue }) {
     }
   }
 
-  const mediaMap = media.map((element) => {
-    const mediaElement =
-      element.media_type === "image" ? (
-        <img src={element.hdurl} alt={element.title} key={element.title} />
-      ) : (
-        <iframe allowFullScreen src={element.url} key={element.title} />   
-      );
+  const mediaMap = media.map((element) => (
+    <Media
+      key={element.date}
+      media={element}
+      likes={likes}
+      setLikes={setLikes}
+      alone={media.length === 1}
+    />
+  ));
 
-    return mediaElement;
-  });
-
-  useEffect(() => handleSearch(searchQuery), []);
+  useEffect(() => {
+    handleSearch(searchQuery);
+  }, []);
 
   return (
     <section>
