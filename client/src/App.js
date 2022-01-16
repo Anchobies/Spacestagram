@@ -7,7 +7,6 @@ import DateAdapter from '@mui/lab/AdapterDateFns';
 import Home from "./Home";
 import Search from "./Search";
 
-// const API_KEY = process.env.NASA_API_KEY;
 
 function App() {
   const [likes, setLikes] = useState([]);
@@ -16,15 +15,16 @@ function App() {
   useEffect(() => {
     fetch("/likes")
       .then((res) => res.json())
-      .then((data) => setLikes(data));
+      .then((data) => console.log(data));
   }, []);
 
   return (
     <LocalizationProvider dateAdapter={DateAdapter}>
       <BrowserRouter>
         <Routes>
-          <Route exact path="/search/:query" element={<Search likes={likes} value={value} setValue={setValue} />} />
+          <Route exact path="/search/:searchQuery" element={<Search likes={likes} setLikes={setLikes} value={value} setValue={setValue} />} />
           <Route exact path="/" element={<Home value={value} setValue={setValue} />} />
+          <Route path="*" element={<Home value={value} setValue={setValue} />} />
         </Routes>
       </BrowserRouter>
     </LocalizationProvider>
