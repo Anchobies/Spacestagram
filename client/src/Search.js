@@ -10,7 +10,6 @@ function Search({ likes, setLikes, value, setValue }) {
   const navigate = useNavigate();
   const API_KEY = process.env.NASA_API_KEY;
 
-
   function handleSearch(query) {
     if (!query) {
       navigate("/");
