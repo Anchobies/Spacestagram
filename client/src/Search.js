@@ -8,7 +8,7 @@ function Search({ likes, setLikes, value, setValue }) {
   const { searchQuery } = useParams();
   const [media, setMedia] = useState([]);
   const navigate = useNavigate();
-  const API_KEY = process.env.NASA_API_KEY;
+  const API_KEY = "98eebngRUNIDe1ZLPU6BkFUSYN3UWt7HdLekOegl";
 
   function handleSearch(query) {
     if (!query) {
