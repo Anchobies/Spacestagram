@@ -1,11 +1,12 @@
 class LikesController < ApplicationController
     def user_likes
-        user = User.find(session[:user_id])
-        if !user
+        if session[:user_id] 
+            render json: session[:user_id] + 321
+        else
             user = User.create()
             session[:user_id] = user.id
+            render json: user.id + 123
         end
-        render json: user.media
     end
 
     def like 
