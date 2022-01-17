@@ -22,7 +22,7 @@ function SearchBar({ value, setValue, handleSearch }) {
   }
 
   return (
-    <>
+    <div className="search-bar">
       <DateRangePicker
         startText="Start Date"
         endText="End Date"
@@ -59,7 +59,7 @@ function SearchBar({ value, setValue, handleSearch }) {
       >
         Generate 10 random
       </Button>
-    </>
+    </div>
   );
 }
 

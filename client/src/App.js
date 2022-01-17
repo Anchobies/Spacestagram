@@ -7,6 +7,7 @@ import DateAdapter from '@mui/lab/AdapterDateFns';
 import Home from "./Home";
 import Search from "./Search";
 
+import "./App.css"
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {

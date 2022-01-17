@@ -52,7 +52,7 @@ function Search({ likes, setLikes, value, setValue }) {
   }, []);
 
   return (
-    <section>
+    <section className="search">
       <SearchBar
         value={value}
         setValue={setValue}

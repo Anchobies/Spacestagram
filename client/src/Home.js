@@ -18,7 +18,7 @@ function Home({ value, setValue }) {
     }
 
     return (
-        <header>
+        <header className="header">
             <h1>Spacestagram</h1>
             <SearchBar value={value} setValue={setValue} handleSearch={handleSearch} />
         </header>

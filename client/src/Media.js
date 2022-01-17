@@ -9,12 +9,14 @@ function Media({ media, likes, setLikes, alone }) {
   let mediaElement =
     media.media_type === "image" ? (
       <img
+        className="thumbnail"
         src={media.hdurl}
         alt={media.title}
         onClick={() => setModalShow(true)}
       />
     ) : (
       <img
+        className="thumbnail"
         src={media.thumbnail_url}
         alt={media.title}
         onClick={() => setModalShow(true)}
@@ -24,9 +26,9 @@ function Media({ media, likes, setLikes, alone }) {
   if (alone) {
     mediaElement =
       media.media_type === "image" ? (
-        <img src={media.hdurl} alt={media.title} />
+        <img className="alone" src={media.hdurl} alt={media.title} />
       ) : (
-        <iframe allowFullScreen src={media.url} title={media.title} />
+        <iframe className="alone" allowFullScreen src={media.url} title={media.title} />
       );
   }
 
@@ -69,7 +71,7 @@ function Media({ media, likes, setLikes, alone }) {
           title: media.title,
         }),
       });
-  
+
       setLikes([...likes, media.title]);
     } else {
       fetch("/likes", {
@@ -82,7 +84,7 @@ function Media({ media, likes, setLikes, alone }) {
           title: media.title,
         }),
       });
-  
+
       setLikes(likes.filter((like) => like !== media.title));
     }
   }
@@ -95,7 +97,7 @@ function Media({ media, likes, setLikes, alone }) {
           <h3>{media.title}</h3>
           <p>{media.explanation}</p>
           <p>{toDateFormat(media.date)}</p>
-          <Button onClick={() => onClickLike() } >{liked ? "♥️" : "♡"}</Button>
+          <Button onClick={() => onClickLike()}>{liked ? "♥️" : "♡"}</Button>
         </article>
       ) : (
         <MediaModal
