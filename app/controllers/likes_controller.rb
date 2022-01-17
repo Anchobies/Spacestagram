@@ -1,7 +1,10 @@
 class LikesController < ApplicationController
     def user_likes
-        if !session[:user_id] || !User.find(session[:user_id])
+        user = "hi"
+        if !session[:user_id] 
             user = "if"
+        elsif !User.find(session[:user_id])
+            user = "elsif"
         else
             user = "else"
         end
