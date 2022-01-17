@@ -17,7 +17,7 @@ function App() {
   useEffect(() => {
     fetch("/likes/user")
       .then((res) => res.json())
-      .then((data) => console.log(data));
+      .then((data) => setLikes(data));
   }, []);
 
   return (
