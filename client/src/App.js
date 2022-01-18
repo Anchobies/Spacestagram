@@ -14,11 +14,17 @@ function App() {
   const [likes, setLikes] = useState([]);
   const [value, setValue] = React.useState([null, null]);
 
+  console.log("app beginning")
+
   useEffect(() => {
     fetch("/likes/user")
       .then((res) => res.json())
-      .then((data) => setLikes(data));
+      .then((data) => {
+        console.log("after initial fetch")
+        setLikes(data)});
   }, []);
+
+  console.log("app after")
 
   return (
     <LocalizationProvider dateAdapter={DateAdapter}>

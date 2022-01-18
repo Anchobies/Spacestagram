@@ -49,6 +49,22 @@
   align-items: center;
 }
 
+.header h1 {
+  margin-bottom: 4%;
+  font-family: "Helvitica Neue", Helvetica, Arial, sans-serif;
+}
+
+.header .search-bar {
+  display: flex;
+  flex-direction: column;
+}
+
+.search-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
 .media-container {
   display: flex;
   flex-direction: row;
@@ -57,12 +73,19 @@
   flex-wrap: wrap;
   width: 75%;
   margin: 0 auto;
-  margin-bottom: 5%;
+  padding-bottom: 5%;
+}
+
+.search {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .search .search-bar {
   display: flex;
   flex-direction: row;
+  margin-top: 1.5%;
 }
 
 .thumbnail {
@@ -84,3 +107,54 @@
   margin-right: 50%;
 }
 
+.header h1 {
+  font-size: 3rem;
+  color: white;
+}
+
+.modal-window {
+  width: 100%;
+  display: flex;
+}
+
+.modal-media {
+  object-fit: cover;
+  min-height: 90vh;
+  width: auto;
+  max-width: 70%;
+  min-width: 50%;
+}
+
+.modal-content {
+  margin: 0;
+  display: flex;
+}
+
+.modal-info {
+  margin: 0;
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+}
+
+.media-title {
+  margin: 4%;
+  font-weight: bold;
+  font-family: 'arial';
+}
+
+.media-explanation {
+  margin: 4% 6% 0 6%;
+  line-height: 1.5rem;
+  font-family: 'arial';
+}
+
+.media-date {
+  margin: 2% 0 2% 4%;
+  font-family: 'arial';
+  font-weight: bold;
+}
+
+.modal-line {
+  margin: 0;
+}

@@ -5,6 +5,7 @@ import Button from "react-bootstrap/Button";
 function Media({ media, likes, setLikes, alone }) {
   const [modalShow, setModalShow] = useState(false);
   let liked = likes.includes(media.title);
+  const formattedDate = toDateFormat(media.date);
 
   let mediaElement =
     media.media_type === "image" ? (
@@ -96,7 +97,7 @@ function Media({ media, likes, setLikes, alone }) {
         <article>
           <h3>{media.title}</h3>
           <p>{media.explanation}</p>
-          <p>{toDateFormat(media.date)}</p>
+          <p>{formattedDate}</p>
           <Button onClick={() => onClickLike()}>{liked ? "♥️" : "♡"}</Button>
         </article>
       ) : (
@@ -104,7 +105,7 @@ function Media({ media, likes, setLikes, alone }) {
           media={media}
           liked={liked}
           onClickLike={onClickLike}
-          toDateFormat={toDateFormat}
+          formattedDate={formattedDate}
           show={modalShow}
           onHide={() => setModalShow(false)}
         />

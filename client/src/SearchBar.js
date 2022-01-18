@@ -36,29 +36,61 @@ function SearchBar({ value, setValue, handleSearch }) {
         }}
         renderInput={(startProps, endProps) => (
           <React.Fragment>
-            <TextField {...startProps} />
-            <Box sx={{ mx: 2 }}> to </Box>
-            <TextField {...endProps} />
+            <TextField size="small" sx={{
+              backgroundColor: "white",
+              borderRadius: "2rem"
+            }} {...startProps} />
+            <Box sx={{ 
+              mx: 2,
+              color: "white" }}> to </Box>
+            <TextField size="small" sx={{
+              backgroundColor: "white",
+              borderRadius: "2rem"
+            }} {...endProps} />
           </React.Fragment>
         )}
       />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <div className="search-buttons">
       <Button
-        size="large"
+        size="small"
         variant="contained"
+        sx={{
+          fontSize: "1rem",
+          textTransform: "none",
+          borderRadius: "0",
+          fontFamily: "arial",
+          backgroundColor: "rgb(10,59,140)",
+          "&:hover": {
+            backgroundColor: "royalblue"
+          }
+        }}
         onClick={() => {
           handleSearch(searchQuery);
         }}
       >
         Search
       </Button>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       <Button
-        size="large"
+        size="small"
         color="secondary"
         variant="contained"
+        sx={{
+          fontSize: "1rem",
+          textTransform: "none",
+          borderRadius: "0",
+          fontFamily: "arial",
+          backgroundColor: "rgb(237,60,51)",
+          "&:hover": {
+            backgroundColor: "lightcoral"
+          }
+        }}
         onClick={() => handleSearch("random")}
       >
         Generate 10 random
       </Button>
+      </div>
     </div>
   );
 }
