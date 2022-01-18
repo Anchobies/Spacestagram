@@ -30,9 +30,9 @@ function App() {
     <LocalizationProvider dateAdapter={DateAdapter}>
       <BrowserRouter>
         <Routes>
-          <Route path="/search/random" element={<Search likes={likes} setLikes={setLikes} value={value} setValue={setValue} />} />
+          <Route path="/search/:searchQuery" element={<Search likes={likes} setLikes={setLikes} value={value} setValue={setValue} />} />
           <Route exact path="/" element={<Home value={value} setValue={setValue} />} />
-          <Route path="*" element={<Home value={value} setValue={setValue} />} />
+          <Route path="/home" element={<Home value={value} setValue={setValue} />} />
         </Routes>
       </BrowserRouter>
     </LocalizationProvider>
