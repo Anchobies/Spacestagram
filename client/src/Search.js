@@ -5,15 +5,11 @@ import SearchBar from "./SearchBar";
 import Media from "./Media";
 
 function Search({ value, setValue }) {
-  console.log("search beginning");
-
   const [likes, setLikes] = useState(null);
   const { searchQuery } = useParams();
   const [media, setMedia] = useState(null);
   const navigate = useNavigate();
   const API_KEY = "98eebngRUNIDe1ZLPU6BkFUSYN3UWt7HdLekOegl";
-
-  console.log(searchQuery);
 
   function handleSearch(query) {
     if (!query) {
@@ -80,11 +76,12 @@ function Search({ value, setValue }) {
       fetch("/likes/user")
         .then((res) => res.json())
         .then((data) => {
-          console.log("after initial fetch");
           setLikes(data);
         });
     }
   }, []);
+
+  console.log(likes)
 
   return (
     <section className="search">

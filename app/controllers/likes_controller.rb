@@ -1,7 +1,7 @@
 class LikesController < ApplicationController
     def user_likes
         user = User.find(session[:user_id])
-        render json: user.media
+        render json: user.media.map { |media| media.title }
     end
 
     def like 
@@ -18,7 +18,7 @@ class LikesController < ApplicationController
             like = Like.create(user_id: user.id, medium_id: medium.id)
         end 
 
-        render json: like
+        render json: like_params[:title]
     end
 
     def unlike 

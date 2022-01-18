@@ -13,8 +13,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 function App() {
   const [value, setValue] = React.useState([null, null]);
 
-  console.log("hi");
-
   return (
     <LocalizationProvider dateAdapter={DateAdapter}>
       <HashRouter>

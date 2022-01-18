@@ -20,6 +20,7 @@ function Home({ value, setValue }) {
     return (
         <header className="header">
             <h1 onClick={() => navigate("/")}>Spacestagram</h1>
+            
             <SearchBar value={value} setValue={setValue} handleSearch={handleSearch} />
         </header>
     )
