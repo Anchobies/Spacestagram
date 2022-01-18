@@ -16,13 +16,13 @@ function App() {
 
   console.log("app beginning")
 
-  useEffect(() => {
-    fetch("/likes/user")
-      .then((res) => res.json())
-      .then((data) => {
-        console.log("after initial fetch")
-        setLikes(data)});
-  }, []);
+  // useEffect(() => {
+  //   fetch("/likes/user")
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       console.log("after initial fetch")
+  //       setLikes(data)});
+  // }, []);
 
   console.log("app after")
 
