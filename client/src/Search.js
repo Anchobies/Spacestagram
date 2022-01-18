@@ -5,6 +5,8 @@ import SearchBar from "./SearchBar";
 import Media from "./Media";
 
 function Search({ likes, setLikes, value, setValue }) {
+  console.log("search beginning")
+
   const { searchQuery } = useParams();
   const [media, setMedia] = useState([]);
   const navigate = useNavigate();
@@ -46,11 +48,13 @@ function Search({ likes, setLikes, value, setValue }) {
       alone={media.length === 1}
     />
   ));
-
+console.log("before search useEffect")
   useEffect(() => {
+    console.log("search useEffect")
     handleSearch(searchQuery);
+    console.log("search useEffect after")
   }, []);
-
+console.log("after search useEffect")
   return (
     <section className="search">
       <SearchBar
