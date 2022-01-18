@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { HashRouter, Route, Routes } from "react-router-dom";
 
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import DateAdapter from '@mui/lab/AdapterDateFns';
@@ -28,14 +28,14 @@ function App() {
 
   return (
     <LocalizationProvider dateAdapter={DateAdapter}>
-      <BrowserRouter>
+      <HashRouter>
         <Routes>
           <Route exact path="/search/:searchQuery" element={<Search likes={likes} setLikes={setLikes} value={value} setValue={setValue} />} />
           <Route exact path="/search" element={<Search likes={likes} setLikes={setLikes} value={value} setValue={setValue} />} />
           <Route exact path="/" element={<Home value={value} setValue={setValue} />} />
           <Route path="/*" element={<Home value={value} setValue={setValue} />} />
         </Routes>
-      </BrowserRouter>
+      </HashRouter>
     </LocalizationProvider>
   );
 }
