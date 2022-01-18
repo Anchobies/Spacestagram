@@ -7,18 +7,10 @@ import Button from "@mui/material/Button";
 
 function SearchBar({ value, setValue, handleSearch }) {
   const minDate = new Date("1995-06-16");
-  let searchQuery = "";
 
   function dateToString(date) {
     const newDate = date.toISOString().split("T")[0];
     return newDate;
-  }
-
-  if (value[0] && value[1]) {
-    searchQuery =
-      +value[0] === +value[1]
-        ? dateToString(value[0])
-        : dateToString(value[0]) + "to" + dateToString(value[1]);
   }
 
   return (
@@ -66,6 +58,15 @@ function SearchBar({ value, setValue, handleSearch }) {
           }
         }}
         onClick={() => {
+          let searchQuery = "";
+
+          if (value[0] && value[1]) {
+            searchQuery =
+              +value[0] === +value[1]
+                ? dateToString(value[0])
+                : dateToString(value[0]) + "to" + dateToString(value[1]);
+          }
+
           handleSearch(searchQuery);
         }}
       >

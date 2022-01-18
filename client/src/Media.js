@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import MediaModal from "./MediaModal";
 import Button from "react-bootstrap/Button";
 
-function Media({ media, likes, setLikes, alone }) {
+function Media({ media, likes, setLikes }) {
   const [modalShow, setModalShow] = useState(false);
-  let liked = likes.includes(media.title);
+  let liked = likes && likes.includes(media.title);
   const formattedDate = toDateFormat(media.date);
 
   let mediaElement =
@@ -23,15 +23,6 @@ function Media({ media, likes, setLikes, alone }) {
         onClick={() => setModalShow(true)}
       />
     );
-
-  if (alone) {
-    mediaElement =
-      media.media_type === "image" ? (
-        <img className="alone" src={media.hdurl} alt={media.title} />
-      ) : (
-        <iframe className="alone" allowFullScreen src={media.url} title={media.title} />
-      );
-  }
 
   function toDateFormat(date) {
     const dateArray = date.split("-");
@@ -93,23 +84,14 @@ function Media({ media, likes, setLikes, alone }) {
   return (
     <>
       {mediaElement}
-      {alone ? (
-        <article>
-          <h3>{media.title}</h3>
-          <p>{media.explanation}</p>
-          <p>{formattedDate}</p>
-          <Button onClick={() => onClickLike()}>{liked ? "♥️" : "♡"}</Button>
-        </article>
-      ) : (
-        <MediaModal
-          media={media}
-          liked={liked}
-          onClickLike={onClickLike}
-          formattedDate={formattedDate}
-          show={modalShow}
-          onHide={() => setModalShow(false)}
-        />
-      )}
+      <MediaModal
+        media={media}
+        liked={liked}
+        onClickLike={onClickLike}
+        formattedDate={formattedDate}
+        show={modalShow}
+        onHide={() => setModalShow(false)}
+      />
     </>
   );
 }

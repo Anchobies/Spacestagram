@@ -21,24 +21,38 @@ function MediaModal(props) {
           />
         )}
         <section className="modal-content">
-          <div className="modal-info">
-            <h2 className="media-title">{props.media.title}</h2>
-            <hr className="modal-line"/>
-            <p className="media-explanation">{props.media.explanation}</p>
+          <div className="modal-top">
+            <div className="modal-header">
+              <h2 className="media-title">{props.media.title}</h2>
+              <button onClick={props.onHide}>&#x2715;</button>
+            </div>
+            <hr className="modal-line" />
+            <div className="explanation-wrapper">
+              <p className="media-explanation">{props.media.explanation}</p>
+            </div>
           </div>
-            <hr className="modal-line"/>
-          <p className="media-date">{props.formattedDate}</p>
-          <Button sx={{
-            fontFamily: "arial",
-            fontSize: "1rem",
-            color: "white",
-            backgroundColor: "rgb(10,59,140)",
-            "&:hover": {
-              backgroundColor: "royalblue"
-            },
-          }} onClick={props.onClickLike}>
-            {props.liked ? "♥️" : "♡"}
-          </Button>
+          <div className="modal-bottom">
+            <hr className="modal-line" />
+            <p className="media-date">{props.formattedDate}</p>
+            <Button
+              sx={{
+                fontFamily: "arial",
+                fontSize: "1rem",
+                color: "white",
+                backgroundColor: "rgb(10,59,140)",
+                "&:hover": {
+                  backgroundColor: "royalblue",
+                },
+                width: "100%",
+                borderRadius: "0",
+                border: "none",
+                boxShadow: "none",
+              }}
+              onClick={props.onClickLike}
+            >
+              {props.liked ? "♥️" : "♡"}
+            </Button>
+          </div>
         </section>
       </div>
     </Modal>

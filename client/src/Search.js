@@ -4,22 +4,25 @@ import { useParams, useNavigate } from "react-router-dom";
 import SearchBar from "./SearchBar";
 import Media from "./Media";
 
-function Search({ likes, setLikes, value, setValue }) {
-  console.log("search beginning")
+function Search({ value, setValue }) {
+  console.log("search beginning");
 
+  const [likes, setLikes] = useState(null);
   const { searchQuery } = useParams();
-  const [media, setMedia] = useState([]);
+  const [media, setMedia] = useState(null);
   const navigate = useNavigate();
   const API_KEY = "98eebngRUNIDe1ZLPU6BkFUSYN3UWt7HdLekOegl";
 
-  console.log(searchQuery)
+  console.log(searchQuery);
 
   function handleSearch(query) {
     if (!query) {
       navigate("/");
     } else if (query === "random") {
       navigate(`/search/random`);
-      fetch(`https://api.nasa.gov/planetary/apod?api_key=${API_KEY}&count=10&thumbs=true`)
+      fetch(
+        `https://api.nasa.gov/planetary/apod?api_key=${API_KEY}&count=10&thumbs=true`
+      )
         .then((res) => res.json())
         .then((data) => setMedia(data));
     } else {
@@ -29,41 +32,70 @@ function Search({ likes, setLikes, value, setValue }) {
         fetch(
           `https://api.nasa.gov/planetary/apod?api_key=${API_KEY}&date=${query}&thumbs=true`
         )
-          .then((res) => res.json())
-          .then((data) => setMedia([data]));
+          .then(handleError)
+          .then((data) => setMedia([data]))
+          .catch((err) => setMedia([]));
       } else {
         fetch(
           `https://api.nasa.gov/planetary/apod?api_key=${API_KEY}&start_date=${dates[0]}&end_date=${dates[1]}&thumbs=true`
         )
-          .then((res) => res.json())
-          .then((data) => setMedia(data));
+          .then(handleError)
+          .then((data) => setMedia(data))
+          .catch((err) => setMedia([]));
       }
     }
   }
 
-  const mediaMap = media.map((element) => (
-    <Media
-      key={element.date}
-      media={element}
-      likes={likes}
-      setLikes={setLikes}
-      alone={media.length === 1}
-    />
-  ));
-console.log("before search useEffect")
+  function handleError(response) {
+    if (!response.ok) {
+      throw Error(response.statusText);
+    } else {
+      return response.json();
+    }
+  }
+
+  let mediaMap = null;
+
+  if (media) {
+    mediaMap = media.map((element) => (
+      <Media
+        key={element.date}
+        media={element}
+        likes={likes}
+        setLikes={setLikes}
+      />
+    ));
+  }
+
+  if (media && media.length === 0) {
+    mediaMap = <h3 className="no-media">No results found</h3>;
+  }
+
   useEffect(() => {
-    console.log("search useEffect")
-    handleSearch(searchQuery);
-    console.log("search useEffect after")
+    if (!media) {
+      handleSearch(searchQuery);
+    }
+
+    if (!likes) {
+      fetch("/likes/user")
+        .then((res) => res.json())
+        .then((data) => {
+          console.log("after initial fetch");
+          setLikes(data);
+        });
+    }
   }, []);
-console.log("after search useEffect")
+
   return (
     <section className="search">
-      <SearchBar
-        value={value}
-        setValue={setValue}
-        handleSearch={handleSearch}
-      />
+      <div className="search-top">
+        <h3 onClick={() => navigate("/")}>Spacestagram</h3>
+        <SearchBar
+          value={value}
+          setValue={setValue}
+          handleSearch={handleSearch}
+        />
+      </div>
       <div className="media-container">{mediaMap}</div>
     </section>
   );
