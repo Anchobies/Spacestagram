@@ -12,6 +12,8 @@ function Search({ likes, setLikes, value, setValue }) {
   const navigate = useNavigate();
   const API_KEY = "98eebngRUNIDe1ZLPU6BkFUSYN3UWt7HdLekOegl";
 
+  console.log(searchQuery)
+
   function handleSearch(query) {
     if (!query) {
       navigate("/");

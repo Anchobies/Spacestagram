@@ -30,7 +30,8 @@ function App() {
     <LocalizationProvider dateAdapter={DateAdapter}>
       <BrowserRouter>
         <Routes>
-          <Route path="/search/:searchQuery" element={<Search likes={likes} setLikes={setLikes} value={value} setValue={setValue} />} />
+          <Route exact path="/search/:searchQuery" element={<Search likes={likes} setLikes={setLikes} value={value} setValue={setValue} />} />
+          <Route exact path="/search" element={<Search likes={likes} setLikes={setLikes} value={value} setValue={setValue} />} />
           <Route exact path="/" element={<Home value={value} setValue={setValue} />} />
           <Route path="/*" element={<Home value={value} setValue={setValue} />} />
         </Routes>
