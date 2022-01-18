@@ -3,7 +3,7 @@ class ApplicationController < ActionController::API
     before_action :check_session
 
   def check_session
-    if !session[:user_id] || !User.find_by(id: session[:user_id])
+    if !session[:user_id] || !User.find_by(id: 1)
         user = User.create()
         session[:user_id] = user.id
     end
