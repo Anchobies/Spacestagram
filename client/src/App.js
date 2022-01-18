@@ -32,7 +32,7 @@ function App() {
         <Routes>
           <Route path="/search/:searchQuery" element={<Search likes={likes} setLikes={setLikes} value={value} setValue={setValue} />} />
           <Route exact path="/" element={<Home value={value} setValue={setValue} />} />
-          <Route path="/home" element={<Home value={value} setValue={setValue} />} />
+          <Route path="/*" element={<Home value={value} setValue={setValue} />} />
         </Routes>
       </BrowserRouter>
     </LocalizationProvider>

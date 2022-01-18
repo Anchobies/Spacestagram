@@ -2,6 +2,7 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://space-stagram.herokuapp.com/",
   "proxy": "http://localhost:3000",
   "dependencies": {
     "@date-io/date-fns": "^2.11.0",
