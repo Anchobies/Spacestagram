@@ -1,11 +1,11 @@
 class ApplicationController < ActionController::API
-  include ActionController::Cookies
-    before_action :check_session
+  # include ActionController::Cookies
+  #   before_action :check_session
 
-  def check_session
-    if !session[:user_id] || !User.find_by(id: 1)
-        user = User.create()
-        session[:user_id] = user.id
-    end
-  end
+  # def check_session
+  #   if !session[:user_id] || !User.find_by(id: 1)
+  #       user = User.create()
+  #       session[:user_id] = user.id
+  #   end
+  # end
 end
