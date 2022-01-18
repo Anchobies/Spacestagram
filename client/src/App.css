@@ -154,7 +154,7 @@
 
 .modal-middle {
   margin: 4% 6% 4% 6%;
-  overflow: scroll;
+  overflow-y: scroll;
 }
 
 .media-explanation {
@@ -187,4 +187,8 @@
   font-family: 'arial';
   font-size: 1.5rem;
   color: white;
+}
+
+@media screen and (max-width: 800px) {
+  
 }
