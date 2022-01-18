@@ -20,7 +20,7 @@ function Home({ value, setValue }) {
     return (
         <header className="header">
             <h1 onClick={() => navigate("/")}>Spacestagram</h1>
-            
+            <h2>Search through NASA's <a href="https://apod.nasa.gov/apod/astropix.html" target="_blank" rel="noopener noreferrer">APOD</a></h2>
             <SearchBar value={value} setValue={setValue} handleSearch={handleSearch} />
         </header>
     )

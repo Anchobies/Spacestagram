@@ -82,7 +82,7 @@ function Search({ value, setValue }) {
   }, []);
 
   return (
-    <section className="search">
+    <header className="search">
       <div className="search-top">
         <h3 onClick={() => navigate("/")}>Spacestagram</h3>
         <SearchBar
@@ -92,7 +92,7 @@ function Search({ value, setValue }) {
         />
       </div>
       <div className="media-container">{mediaMap}</div>
-    </section>
+    </header>
   );
 }
 
