@@ -149,8 +149,7 @@
   font-family: 'arial';
 }
 
-.explanation-wrapper {
-  max-height: 75%;
+.modal-middle {
   margin: 4% 6% 4% 6%;
   overflow: scroll;
 }
@@ -158,10 +157,6 @@
 .media-explanation {
   line-height: 1.5rem;
   font-family: 'arial';
-}
-
-.modal-top {
-  max-height: 85%;
 }
 
 .media-date {

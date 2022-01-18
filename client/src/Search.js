@@ -9,7 +9,7 @@ function Search({ value, setValue }) {
   const { searchQuery } = useParams();
   const [media, setMedia] = useState(null);
   const navigate = useNavigate();
-  const API_KEY = "Some API Key";
+  const API_KEY = "98eebngRUNIDe1ZLPU6BkFUSYN3UWt7HdLekOegl";
 
   function handleSearch(query) {
     if (!query) {
@@ -80,8 +80,6 @@ function Search({ value, setValue }) {
         });
     }
   }, []);
-
-  console.log(likes)
 
   return (
     <section className="search">

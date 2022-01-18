@@ -27,9 +27,9 @@ function MediaModal(props) {
               <button onClick={props.onHide}>&#x2715;</button>
             </div>
             <hr className="modal-line" />
-            <div className="explanation-wrapper">
-              <p className="media-explanation">{props.media.explanation}</p>
-            </div>
+          </div>
+          <div className="modal-middle">
+            <p className="media-explanation">{props.media.explanation}</p>
           </div>
           <div className="modal-bottom">
             <hr className="modal-line" />
