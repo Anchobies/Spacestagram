@@ -190,5 +190,22 @@
 }
 
 @media screen and (max-width: 800px) {
-  
+  .modal-window {
+    display: column;
+  }
+
+  .modal-media {
+    width: 90vh;
+    height: auto;
+    max-height: 70%;
+    min-height: 50%;
+  }
+
+  .modal-content {
+    height: 90vh;
+  }
+
+  .modal-explanation {
+    color: pink;
+  }
 }

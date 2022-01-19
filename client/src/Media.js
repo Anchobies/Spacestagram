@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import MediaModal from "./MediaModal";
-import Button from "react-bootstrap/Button";
 
 function Media({ media, likes, setLikes }) {
   const [modalShow, setModalShow] = useState(false);
