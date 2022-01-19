@@ -191,17 +191,18 @@
 
 @media screen and (max-width: 992px) {
   .modal-window {
+    position: absolute;
+    top: -50%;
     flex-direction: column;
   }
 
   .modal-media {
     max-width: 100%;
-    height: auto;
-    max-height: 70%;
-    min-height: 50%;
+    max-height: 48vh;
   }
 
   .modal-content {
     width: auto;
+    max-height: 48vh;
   }
 }
