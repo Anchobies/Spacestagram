@@ -9,7 +9,7 @@ function Search({ value, setValue }) {
   const { searchQuery } = useParams(); // Get the search query from the url
   const [media, setMedia] = useState(null); // State for array of media returned from API
   const navigate = useNavigate();
-  const API_KEY = "98eebngRUNIDe1ZLPU6BkFUSYN3UWt7HdLekOegl";
+  const API_KEY = "Some API Key";
 
   let mediaMap = null;
 
