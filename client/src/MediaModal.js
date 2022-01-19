@@ -38,10 +38,11 @@ function MediaModal(props) {
               sx={{
                 fontFamily: "arial",
                 fontSize: "1rem",
-                color: "white",
+                color: "white !important",
                 backgroundColor: "rgb(10,59,140)",
                 "&:hover": {
-                  backgroundColor: "royalblue",
+                  backgroundColor: "rgb(10,59,140)",
+                  opacity: 0.5,
                 },
                 width: "100%",
                 borderRadius: "0",
