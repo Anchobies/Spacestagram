@@ -19,7 +19,8 @@ The application is built with React frontend and Ruby on Rails backend. The APOD
 
 ### Core Web Vitals
 
-![Performance review of the Spacestagram App](https://user-images.githubusercontent.com/73362854/150217167-82f70152-7d74-48c9-b08a-4587664e76cc.png)
+![Performance review of the Spacestagram App](https://user-images.githubusercontent.com/73362854/150219264-b4814237-a61f-45d6-bbdd-1a2631308e5e.png)
+
 
 ## Components Tree
 
