@@ -197,12 +197,12 @@
   }
 
   .modal-media {
-    max-width: 100%;
+    /* max-width: 100%; */
     max-height: 48vh;
   }
 
   .modal-content {
-    width: auto;
+    /* width: auto; */
     max-height: 48vh;
   }
 
