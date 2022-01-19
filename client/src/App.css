@@ -197,12 +197,11 @@
   }
 
   .modal-media {
-    /* max-width: 100%; */
+    max-width: 100%;
     max-height: 48vh;
   }
 
   .modal-content {
-    /* width: auto; */
     max-height: 48vh;
   }
 
@@ -218,11 +217,13 @@
     justify-content: center;
   }
 
-  .search-buttons {
-    margin-top: 1rem;
-  }
-
   .media-container {
     width: 100%;
+  }
+}
+
+@media screen and (max-width: 736px) {
+  .search-top .search-buttons {
+    margin-top: 1rem;
   }
 }
