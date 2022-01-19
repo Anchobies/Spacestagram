@@ -107,6 +107,8 @@
 
 .search-top h3 {
   font-family: "Helvitica Neue", Helvetica, Arial, sans-serif;
+  font-weight: bold;
+  font-size: 1.8rem;
   color: white;
   margin-top: 1.5%;
   margin-right: 2%;
