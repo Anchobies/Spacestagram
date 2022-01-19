@@ -1,9 +1,12 @@
 class LikesController < ApplicationController
+
+    # Returns an array of titles of media liked by user as JSON
     def user_likes
         user = User.find(session[:user_id])
         render json: user.media.map { |media| media.title }
     end
 
+    # Creates a Like for the media liked by the user. Returns the media's title as JSON.
     def like 
         user = User.find(session[:user_id])
         medium = Medium.find_by(title: like_params[:title])
@@ -21,6 +24,7 @@ class LikesController < ApplicationController
         render json: like_params[:title]
     end
 
+    # Destroys the Like corresponding to the media unliked by the user
     def unlike 
         user = User.find(session[:user_id])
         medium = Medium.find_by(title: like_params[:title])

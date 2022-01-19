@@ -7,10 +7,11 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 
 function SearchBar({ value, setValue, handleSearch }) {
-  const minDate = new Date("1995-06-16");
-  const [isError, setIsError] = useState(false);
+  const [isError, setIsError] = useState(false); // State for whether search query is valid or not
   const navigate = useNavigate();
+  const minDate = new Date("1995-06-16"); // Earliest date pickable from the DateRangePicker (calendar) component
 
+  // Converts date to YYYY-MM-DD string format
   function dateToString(date) {
     const newDate = date.toISOString().split("T")[0];
     return newDate;
@@ -84,6 +85,7 @@ function SearchBar({ value, setValue, handleSearch }) {
             },
           }}
           onClick={() => {
+            // Forms search query or displays error message depending on the date values chosen
             if (
               value[0] &&
               value[1] &&

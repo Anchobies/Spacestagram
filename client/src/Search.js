@@ -5,15 +5,43 @@ import SearchBar from "./SearchBar";
 import Media from "./Media";
 
 function Search({ value, setValue }) {
-  const [likes, setLikes] = useState(null);
-  const { searchQuery } = useParams();
-  const [media, setMedia] = useState(null);
+  const [likes, setLikes] = useState(null); // State for array of title of media liked by user
+  const { searchQuery } = useParams(); // Get the search query from the url
+  const [media, setMedia] = useState(null); // State for array of media returned from API
   const navigate = useNavigate();
-  const API_KEY = "Some API Key";
+  const API_KEY = "98eebngRUNIDe1ZLPU6BkFUSYN3UWt7HdLekOegl";
 
+  let mediaMap = null;
+
+  // Media component for each media returned from API
+  if (media) {
+    mediaMap = media.map((element) => (
+      <Media
+        key={element.date}
+        media={element}
+        likes={likes}
+        setLikes={setLikes}
+      />
+    ));
+  }
+
+  if (media && media.length === 0) {
+    mediaMap = <h3 className="no-media">No results found</h3>;
+  }
+
+  // Checks if fetch is successful. If not, error is thrown and later caught.
+  function handleError(response) {
+    if (!response.ok) {
+      throw Error(response.statusText);
+    } else {
+      return response.json();
+    }
+  }
+
+  // Depending on the search query, fetch media from the API and set the media state
   function handleSearch(query) {
     if (!query) {
-      navigate("/");
+      navigate("/"); // If no query in the url, navigate to Home page
     } else if (query === "random") {
       navigate(`/search/random`);
       fetch(
@@ -42,31 +70,8 @@ function Search({ value, setValue }) {
     }
   }
 
-  function handleError(response) {
-    if (!response.ok) {
-      throw Error(response.statusText);
-    } else {
-      return response.json();
-    }
-  }
-
-  let mediaMap = null;
-
-  if (media) {
-    mediaMap = media.map((element) => (
-      <Media
-        key={element.date}
-        media={element}
-        likes={likes}
-        setLikes={setLikes}
-      />
-    ));
-  }
-
-  if (media && media.length === 0) {
-    mediaMap = <h3 className="no-media">No results found</h3>;
-  }
-
+  /* When the Search component initially mounts, fetch media from the API through the url search query parameters
+  and also fetch the user's likes information */
   useEffect(() => {
     if (!media) {
       handleSearch(searchQuery);

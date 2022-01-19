@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import MediaModal from "./MediaModal";
 
 function Media({ media, likes, setLikes }) {
-  const [modalShow, setModalShow] = useState(false);
-  let liked = likes && likes.includes(media.title);
-  const formattedDate = toDateFormat(media.date);
+  const [modalShow, setModalShow] = useState(false); // State for whether modal is shown or not
+  let liked = likes && likes.includes(media.title); // Checks whether media is liked or not
+  const formattedDate = toDateFormat(media.date); // Formatted date of picture uploaded
 
+  // Determine whether to show the media as an image or an iframe (video)
   let mediaElement =
     media.media_type === "image" ? (
       <img
@@ -23,15 +24,16 @@ function Media({ media, likes, setLikes }) {
       />
     );
 
+  // Formats date to Month DD(ordinal), YYYY (e.g. May 21st, 2020)
   function toDateFormat(date) {
-    const dateArray = date.split("-");
+    const dateArray = date.split("-"); 
     const year = dateArray[0];
     let month = new Date(date);
     const day = dateArray[2];
 
     month = month.toLocaleString("default", { month: "long" });
 
-    function nth(day) {
+    function nth(day) { // Returns ordinal suffix for day
       if (day > 3 && day < 21) {
         return "th";
       }
@@ -50,6 +52,7 @@ function Media({ media, likes, setLikes }) {
     return month + " " + +day + nth(day) + ", " + year;
   }
 
+  // Makes POST or DELETE fetch requests for liking/unliking media then sets the likes state
   function onClickLike() {
     if (!liked) {
       fetch("/likes", {

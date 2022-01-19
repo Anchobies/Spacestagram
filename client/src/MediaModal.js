@@ -4,8 +4,9 @@ import Button from "@mui/material/Button";
 
 function MediaModal(props) {
   return (
+    // Modal window that contains the media and media content
     <Modal {...props} size="xl" aria-labelledby="media-modal" centered>
-      <div className="modal-window">
+      <div className="modal-window"> 
         {props.media.media_type === "image" ? (
           <img
             src={props.media.hdurl}
